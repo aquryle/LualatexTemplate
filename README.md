@@ -1,0 +1,2 @@
+# LualatexTemplate
+LuaLaTeX Document Template
