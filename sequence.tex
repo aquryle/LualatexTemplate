@@ -1,0 +1,72 @@
+\section{mscを使ったシーケンス図}
+
+\begin{msc}{Example}
+    \declinst{usr}{User}{}
+    \declinst{m1}{Machine 1}{control}
+    \declinst{m2}{Machine 2}{drill}
+
+    \mess[label position=below]{startm1}{usr}{m1}
+    \nextlevel
+    \mess{startm2}{m1}{m2}
+    \nextlevel
+    \mess{log}{m1}{envleft}
+    \nextlevel
+    \nextlevel
+    \mess{output}{m2}{usr}[2]
+    \mess{free}{m1}{usr}
+    \nextlevel
+\end{msc}
+
+
+\begin{msc}{Simple Sequence Diagram}
+
+  % インスタンスの宣言
+  \declinst{user}{User}{}
+  \declinst{server}{}{Server}
+
+  % メッセージのやり取り
+  \mess{Request}{user}{server}  % "Request" というメッセージを user から server へ送信
+  \nextlevel
+  \nextlevel
+  \mess[side=right]{Process}{server}{server}[-1]  % server が自身で "Process" を実行
+  \nextlevel
+  \mess{Process}{server}{server}[1]  % server が自身で "Process" を実行
+  \nextlevel
+  \nextlevel
+  \mess{Response}{server}{user}  % server から user へ "Response" というメッセージを送信
+\end{msc}
+
+
+\begin{msc}[small values]{Label reference points}
+    \declinst{m0}{I0}{}
+    \declinst{m1}{I1}{}
+    \declinst{m2}{I2}{}
+    \nextlevel
+    \mess[label position=above]{above}{m0}{m1}
+    \nextlevel
+    \mess[label position=below]{below}{m1}{m2}
+    \nextlevel[2]
+    \mess[anchor=south,pos=0.1]{south}{m1}{m0}
+    \nextlevel
+    \mess[anchor=north]{north}{m2}{m1}
+    \nextlevel[2]
+    \mess[label position=left]{left}{m0}{m0}[2]
+    \mess[side=right,pos=0.9]{right}{m2}{m2}[2]
+    \nextlevel[4]
+    \mess[label position=right]{right}{m0}{m0}[2]
+    \mess[left,side=right]{left}{m2}{m2}[2]
+    \nextlevel[6]
+    \mess[anchor=east]{east}{m0}{m0}[-2]
+    \mess[anchor=west,side=right]{west}{m2}{m2}[-2]
+    \nextlevel[4]
+    \mess[right]{right}{m0}{m0}[-2]
+    \mess[side=right,left]{left}{m2}{m2}[-2]
+    \nextlevel[2]
+    \mess[below left]{below left}{m0}{m1}[2]
+    \mess[above right]{above right}{m1}{m2}[2]
+    \nextlevel[6]
+    \mess[anchor=south west]{SW}{m1}{m0}[-2]
+    \mess[anchor=north east,pos=0]{NE}{m2}{m1}[-2]
+    \nextlevel[2]
+\end{msc}
+
